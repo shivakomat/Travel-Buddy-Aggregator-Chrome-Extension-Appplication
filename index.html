@@ -3,25 +3,19 @@
   <head>
     <title>Travel Buddy Trip Items Manager</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="popup.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="form_content.css" media="screen" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/form_content.css" media="screen" />
     <script type="text/javascript" data-src-elem="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--    <script type="text/javascript" data-src-elem="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>-->
-
-
+    <script type="text/javascript" data-src-elem="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/popup.js"></script>
 
-<!--      <script type="text/javascript" data-src="./UserBucketsController.js"></script>-->
-    <script src="popup.js"></script>
   </head>
 
   <body>
     <div>
-<!--      <h1 class="header_img_logo"></h1>-->
       <h1 class="logo"><img class="logo-icon" src="./images/temp_logo.png" />Travel Buddy Agg [+]</h1>
     </div>
     <div class="modal-content">
@@ -42,16 +36,15 @@
             <textarea name="field3" placeholder="A little note to yourself"></textarea>
 
           </fieldset>
-          <input type="submit" value="SAVE"/>
+          <input type="submit" value="GET INFO" data-ng-submit="pageController.parseFlightDetailsFromFlightHub()"/>
         </form>
       </div>
     </div>
-<!--    Adding links later-->
-<!--    <div class="modal-icons">-->
-<!--      <div class="flex-container">-->
-<!--        <div class="flex">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="modal-icons">
+      <div class="flex-container">
+        <div class="flex">
+        </div>
+      </div>
+    </div>
   </body>
 </html>

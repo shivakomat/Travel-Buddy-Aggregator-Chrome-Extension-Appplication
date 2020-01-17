@@ -20,38 +20,54 @@
 
 
     this.getUserTrips = function (callback, userId) {
-        $http.get('http://localhost:9000/user-trips/' + userId).
-        then(function(response) {
+        $http.get('http://localhost:9000/user-trips/' + userId)
+        .then(function(response) {
            callback(response.data);
         });
+    };
+
+
+    this.getFlightHub = function (callback, url) {
+        $http.get('http://localhost:9000/flight-hub/' + encodeURI(url))
+            .then(function (response) {
+              callback(response.data);
+            });
     };
 });
 
 myApp.controller("PageController", function ($http, $scope, pageInfoService) {
 
     var userId = 1;
-    $scope.trips = [];
-    $scope.tripPlaces = [];
-    $scope.buckets = [];
-    $scope.bucketItems = [];
+    var pageController = this;
+    pageController.trips = [];
+    pageController.tripPlaces = [];
+    pageController.buckets = [];
+    pageController.bucketItems = [];
 
     pageInfoService.getUserTrips(function (userTrips) {
-        $scope.trips = userTrips.trips;
-        $scope.tripPlaces = userTrips.tripPlaces;
-        $scope.buckets = userTrips.buckets;
-        $scope.bucketItems = userTrips.bucketItems;
-        if(!$scope.$$phase) {
-            $scope.$apply();
+        pageController.trips = userTrips.trips;
+        pageController.tripPlaces = userTrips.tripPlaces;
+        pageController.buckets = userTrips.buckets;
+        pageController.bucketItems = userTrips.bucketItems;
+        if(!pageController.$$phase) {
+            pageController.$apply();
         }
     }, userId);
 
     pageInfoService.getInfo(function (info) {
-        $scope.title = info.title;
-        $scope.url = info.url;
-        $scope.pageInfos = info.pageInfos;
-        
-        $scope.$apply();
+        pageController.title = info.title;
+        pageController.url = info.url;
+        pageController.pageInfos = info.pageInfos;
+        console.log(pageController.url);
+        // pageController.$apply();
     });
+
+    pageController.parseFlightDetailsFromFlightHub = pageInfoService.getFlightHub(function (flightDetails) {
+        console.log(flightDetails);
+        pageController.flightDetails = flightDetails;
+    }, pageController.url)
+
+
 });
 
 
