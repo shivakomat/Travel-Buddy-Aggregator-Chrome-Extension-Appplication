@@ -1,17 +1,18 @@
 {
   "name": "TravelBuddyChromeExtension",
-
-  "description": "Aggregates Travel Information",
-
-  "version": "1.0.0",
-
+  "version": "1.0",
   "manifest_version": 2,
 
-  "icons": { "128": "images/temp_logo.png" },
+  "description": "Collecting Travel Trip Pages",
+
+  "icons": {
+    "128": "images/temp_logo.png"
+  },
 
   "browser_action": {
     "default_icon": "images/temp_logo.png",
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_title": "TravelBuddyChromeExtension"
   },
 
   "content_scripts": [ {
@@ -20,5 +21,7 @@
     "run_at": "document_start"
   } ],
 
-  "permissions": [ "http://*/*", "https://*/*", "unlimitedStorage", "contextMenus", "cookies", "tabs", "notifications", "activeTab" ]
+  "minimum_chrome_version": "18",
+
+  "permissions": [ "http://*/*", "https://*/*", "unlimitedStorage", "contextMenus", "cookies", "tabs", "notifications" ]
 }

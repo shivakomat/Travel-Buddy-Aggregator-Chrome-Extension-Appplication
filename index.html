@@ -10,33 +10,32 @@
     <script type="text/javascript" data-src-elem="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/app/app.js"></script>
-    <script src="js/app/popup.js"></script>
+    <script src="js/app/pageController.js"></script>
 
   </head>
 
   <body>
     <div>
-      <h1 class="logo"><img class="logo-icon" src="./images/temp_logo.png" />Travel Buddy Agg [+]</h1>
+      <h1 class="logo">
+        <img class="logo-icon" src="./images/temp_logo.png" />Travel Buddy Agg [+]
+      </h1>
     </div>
-    <div class="modal-content">
-      <div class="form-style-5" data-ng-controller="PageController">
+    <div class="modal-content" data-ng-controller="PageController" data-ng-init="userTrips(1)">
+      <div>{{title}}</div>
+      <div>{{url}}</div>
+      <div>{{flightDetails}}</div>
+
+      <div class="form-style-5" >
         <form>
           <fieldset>
             <legend><span class="number">1</span>Your Trips</legend>
-            <select ng-model="trips" ng-options="trip.name for trip in trips"></select>
+            <select ng-model="trip.name" ng-options="trip.name for trip in trips"></select>
 
             <legend><span class="number">2</span>Your Trip Places</legend>
-            <select ng-model="tripPlaces" ng-options="tripPlace.name for tripPlace in tripPlaces"></select>
-
-            <legend><span class="number">3</span> Pick a bucket</legend>
-            <select ng-model="buckets" ng-options="bucket.name for bucket in buckets"></select>
-
-            <legend><span class="number">4</span> Add a trip item</legend>
-            <input type="text" name="field1" placeholder="Name *">
-            <textarea name="field3" placeholder="A little note to yourself"></textarea>
+            <select ng-model="tripPlace.name" ng-options="tripPlace.name for tripPlace in tripPlaces"></select>
 
           </fieldset>
-          <input type="submit" value="GET INFO" data-ng-submit="pageController.parseFlightDetailsFromFlightHub()"/>
+          <input type="submit" value="GET INFO" data-ng-click="scrapeFlightInfo()"/>
         </form>
       </div>
     </div>
